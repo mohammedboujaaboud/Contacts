@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin\\Release\\net8.0\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/9859149b-3423-4ee6-ad65-b6aaed2ba59c/resourceGroups/ContactApiRG/providers/Microsoft.Web/sites/contactapi"
+}
