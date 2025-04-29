@@ -25,7 +25,7 @@ jobs:
         run: dotnet publish -c Release -o ./myapp
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: contact-app
           path: ./myapp
