@@ -13,18 +13,18 @@ namespace Contacts.Controllers
    [Authorize]
 public class ContactsController : ControllerBase
 {
-    private readonly ApplicationDbContext _context;
+    private readonly ApplicationDbContext _contcatdbContext;
 
     public ContactsController(ApplicationDbContext context)
     {
-        _context = context;
+        _contcatdbContext = context;
     }
 
     // GET: api/Contacts
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ContactResponseDto>>> GetContacts()
     {
-        var contacts = await _context.Contacts
+        var contacts = await _contcatdbContext.Contacts
             .Select(c => new ContactResponseDto
             {
                 Id = c.Id,
@@ -44,7 +44,7 @@ public class ContactsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<ContactResponseDto>> GetContact(int id)
     {
-        var contact = await _context.Contacts
+        var contact = await _contcatdbContext.Contacts
             .Where(c => c.Id == id)
             .FirstOrDefaultAsync();
 
@@ -82,8 +82,8 @@ public class ContactsController : ControllerBase
             OwnerId = "demo-user-id" // Hardcoded for now
         };
 
-        _context.Contacts.Add(contact);
-        await _context.SaveChangesAsync();
+        _contcatdbContext.Contacts.Add(contact);
+        await _contcatdbContext.SaveChangesAsync();
 
         var responseDto = new ContactResponseDto
         {
